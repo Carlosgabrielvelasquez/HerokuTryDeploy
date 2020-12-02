@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>GeSoc - {{titulo}}</title>
+	<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="main.css">
+    <link rel="icon" href="/img/icon-logo-dds.ico">
+    <script src="https://kit.fontawesome.com/816b172e21.js" crossorigin="anonymous"></script>
+</head>
+
+<header class="header">
+    <div class="container-fluid">
+        <img src="/img/Logo-head.png" class="img-responsive"/>
+    </div>
+</header>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="/home">Inicio</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/altaEgresos"><i class="fas fa-file-alt"></i> Cargar Egreso </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/entidades"><i class="fas fa-building"></i> Entidades </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/categorias"><i class="fas fa-address-book"></i> Categorias </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/mensajes"><i class="fas fa-inbox"></i> Bandeja de mensajes </a>
+            </li>
+            {{#if esAdmin}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/nuevoUsuario"><i class="fas fa-user"></i> Cargar Usuario </a>
+                </li>
+            {{/if}}
+
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link">
+                    <strong>Bienvenido:</strong>
+                    {{nombreUsuario}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{{#if mensaje}}
+    <div class="alert alert-{{tipoMensaje}} alert-dismissible fade show" role="alert">
+        <strong>{{tituloMensaje}}</strong> {{textoMensaje}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{{/if}}
+<div class="container">
+	{{#block "contenido"}}
+	{{/block}}
+</div>
+
+<footer class="footer">
+    <div class="container-fluid">
+        <p>© {{anio}} GeSoc</p>
+    </div>
+</footer>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</html>

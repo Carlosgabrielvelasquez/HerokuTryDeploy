@@ -1,0 +1,113 @@
+{{#partial "contenido"}}
+
+    <div>
+        <form method="POST" action="/entidades">
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label>Nombre Ficticio</label>
+                </div>
+                <div class="form-group col">
+                    <input name="nombreFicticio" class="form-control" type="text" maxlength="64">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label>Razon social</label>
+                </div>
+                <div class="form-group col">
+                    <input name="razonSocial" class="form-control" type="text" maxlength="64">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label>Categorias asignadas</label>
+                </div>
+                <div class="form-group col">
+                    <select id="categorias" name="categorias" class="custom-select" multiple>
+                        <option selected></option>
+                        {{#each categoriasEntidad}}
+                            <option value={{nombre}}>{{nombre}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="radio" id="base" name="tipoEntidad" value="base" checked data-toggle="collapse" data-target=".collapseJuridica.in"/>
+                <label for="base">Base</label>
+                <input type="radio" id="juridica" name="tipoEntidad" value="juridica" data-toggle="collapse" data-target=".collapseJuridica:not(.in)"/>
+                <label for="juridica">Jurídica</label>
+            </div>
+            <div class="collapseJuridica collapse">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Cuit</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="cuit" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>País</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="pais" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Provincia</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="provincia" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Ciudad</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="ciudad" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Dirección</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="direccion" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Código IGJ</label>
+                    </div>
+                    <div class="form-group col">
+                        <input name="codigoIgj" class="form-control" type="text" maxlength="64">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="oss" name="tipoEntidadJuridica" value="oss" checked data-toggle="collapse" data-target=".collapseEmpresa.in"/>
+                    <label for="oss">Organizacion Sector Social</label>
+                    <input type="radio" id="empresa" name="tipoEntidadJuridica" value="empresa" data-toggle="collapse" data-target=".collapseEmpresa:not(.in)"/>
+                    <label for="empresa">Empresa</label>
+                </div>
+                <div class="collapseEmpresa collapse form-group">
+                    <select id="categoriaEmpresa" name="categoriaEmpresa" class="custom-select">
+                        <option selected>Selecciona el tipo de empresa</option>
+                        <option value="micro">Micro</option>
+                        <option value="pequenia">Pequeña</option>
+                        <option value="medianaTramo1">Mediana tramo 1</option>
+                        <option value="medianaTramo2">Mediana tramo 2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn btn-outline-primary btn-block" data-loading-text="Creando..."><i class="fas fa-sign-in-alt"></i>Crear</button>
+            </div>
+        </form>
+    </div>
+
+{{/partial}}
+
+{{>layout.hbs}}
